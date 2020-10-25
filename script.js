@@ -1,5 +1,5 @@
-let position = [1, 0];
-
+const startPosition = [1, 0];
+let position = [...startPosition];
 
 // Move function
 function move(direction) {
@@ -13,3 +13,17 @@ function move(direction) {
     return position;
 };
 
+//Load next step, evaluate if game is won, movements
+function runGame() {
+    checkGameWon();
+};
+
+function checkGameWon() {
+    if (position[0] === 1 && position[1] === 2) {
+        alert('Yay you have won the game');
+    }
+};
+
+function restartGame() {
+    position = [...startPosition];
+}
