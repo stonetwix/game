@@ -1,5 +1,10 @@
 const startPosition = [1, 0];
 let position = [...startPosition];
+const story = {
+    '1,0': 'Start text',
+    '1,1': 'Middle text',
+    '1,2': 'Goal text',
+}
 
 // Move function
 function move(direction) {
@@ -16,6 +21,7 @@ function move(direction) {
 //Load next step, evaluate if game is won, movements
 function runGame() {
     checkGameWon();
+    printStory();
 };
 
 function checkGameWon() {
@@ -26,4 +32,9 @@ function checkGameWon() {
 
 function restartGame() {
     position = [...startPosition];
+}
+
+function printStory() {
+    const storyText = story[position.toString()];
+    console.log(storyText);
 }
