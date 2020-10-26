@@ -4,10 +4,11 @@ let position = [...startPosition];
 
 const story = {
     '1,0': 'Du vaknar upp mitt i skogen och har ingen aning om hur du hamnade här. Det är mitt i natten, kallt och fullmånen lyser upp omgivningarna. Du tar dig upp på fötter och ser dig omkring. I norr är vägen blockerad av en hög mur. Välj ett väderstreck på knapparna nedan.',
-    '0,0': 'Du går förbi ett snårigt skogsparti när en stor varulv plötsligt hoppar fram och attakerar!',
-    '2,0': 'En glänta uppenbarar sig i skogen, ett rymdskepp blinkar och du bländas av ett starkt sken. En tre meter lång alien kommer hotfullt emot dig.',
-    '1,1': 'Middle text',
-    '1,2': 'Goal text',
+    '0,0': 'Du går förbi ett snårigt skogsparti när en stor varulv plötsligt hoppar fram och attakerar! Du har bara dina knytnävar som vapen. Om du överlever fighten finns bara en väg att gå – norrut.',
+    '2,0': 'En glänta uppenbarar sig i skogen, lamporna på  ett rymdskepp blinkar och du bländas av ett starkt sken. En tre meter lång alien kommer hotfullt emot dig. Du ser dig snabbt omkring och ser något blänkande föremål i gräset bredvid dig – ett svärd! Du plockar upp det och tar upp kampen mot utomjordingen. OM du tar dig förbi fortsätt norrut.',
+    '0,1': 'Du tar dig vidare genom den täta skogen och känner vingarna från en ovanligt stor fladdermus slå dig mot axeln, du snubblar till och när du tittar upp så står du ansikte mot ansikte med en 1000 år gammal och väldigt blodtörstig vampyr. Du får tag på en spetsig grenbit som vapen. Du fortsätter sedan österut.',
+    '1,1': 'Det har blivit morgon och du är äntligen hemma igen, din lillasyster springer och möter dig i trädgården, hon undrar var du har varit. Svara i inputfältet nedan.',
+    '2,1': 'Du tar dig vidare genom skogen och börjar känna igen stigarna, du börjar närma sig ditt hus. Du hör tunga steg som kommer emot dig bakom en krök längre fram. Marken skakar under dina fötter. Ett stort troll uppenbarar sig framför dig och blockerar vägen. Den ser inte vänligt inställd ut. Tur att du har kvar svärdet. Lyckas du övervinna trollet så fortsätt västerut.',
 };
 
 const werewolf = {
@@ -18,14 +19,20 @@ const werewolf = {
 
 const vampire = {
     name: 'Dracula',
-    health: 8,
-    strength: 3,
+    health: 4,
+    strength: 2,
 };
 
 const alien = {
     name: 'Alien',
-    health: 9,
-    strength: 4,
+    health: 5,
+    strength: 2,
+};
+
+const troll = {
+    name: 'Trollo',
+    health: 5,
+    strength: 3,
 };
 
 const allowedMovements = {
@@ -44,7 +51,7 @@ let monsters = createMonsters();
 const startPlayer = {
     name: 'Moa',
     health: 12,
-    strength: 1,
+    strength: 2,
 };
 
 let player = {...startPlayer};
@@ -54,6 +61,7 @@ function createMonsters() {
         '0,0': {...werewolf, name: 'Wolfie'},
         '0,1': {...vampire, name: 'Bloody Mary'},
         '2,0': {...alien},
+        '2,1': {...troll},
     };
     return monsters;
 }
