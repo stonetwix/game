@@ -3,28 +3,28 @@ const startPosition = [1, 0];
 let position = [...startPosition];
 
 const story = {
-    '1,0': 'Du vaknar upp mitt i skogen och har ingen aning om hur du hamnade här. Det är mitt i natten, kallt och fullmånen lyser upp omgivningarna. Du tar dig upp på fötter och ser dig omkring.',
-    '0,0': 'Ett par gula lysand ögon lurar i ett buskage, en varulv hoppar fram. Grrr! Jag är och du är inte välkommen här och attakerar.',
-    '2,0': '',
+    '1,0': 'Du vaknar upp mitt i skogen och har ingen aning om hur du hamnade här. Det är mitt i natten, kallt och fullmånen lyser upp omgivningarna. Du tar dig upp på fötter och ser dig omkring. I norr är vägen blockerad av en hög mur. Välj ett väderstreck på knapparna nedan.',
+    '0,0': 'En stor varulv hoppar fram och attakerar!',
+    '2,0': 'En glänta uppenbarar sig i skogen, ett rymdskepp blinkar och du bländas av ett starkt sken. En tre meter lång alien kommer hotfullt emot dig.',
     '1,1': 'Middle text',
     '1,2': 'Goal text',
 };
 
 const werewolf = {
     name: 'Werewolf',
-    health: 10,
+    health: 7,
     strength: 1,
 };
 
 const vampire = {
     name: 'Dracula',
-    health: 12,
+    health: 8,
     strength: 3,
 };
 
 const alien = {
     name: 'Alien',
-    health: 13,
+    health: 9,
     strength: 4,
 };
 
@@ -103,16 +103,13 @@ function restartGame() {
     position = [...startPosition];
     player = {...startPlayer};
     monsters = createMonsters();
+    location.reload();
 };
 
 function printStory() {
     const storyText = story[position.toString()] || 'No story';
     showTextInHtml(storyText);
     console.log(storyText);
-};
-
-function showHideElements() {
-
 };
 
 function fight() {
@@ -160,4 +157,14 @@ function showTextInHtml(text) {
 function moveWest() {
     moveOnMap('west');
     runGame();
-}
+};
+
+function moveEast() {
+    moveOnMap('east');
+    runGame();
+};
+
+function moveNorth() {
+    moveOnMap('north');
+    runGame();
+};
