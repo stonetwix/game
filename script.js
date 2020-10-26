@@ -1,23 +1,60 @@
 const startPosition = [1, 0];
+
 let position = [...startPosition];
+
 const story = {
     '1,0': 'Start text',
     '1,1': 'Middle text',
     '1,2': 'Goal text',
 };
+
 const werewolf = {
     name: 'Werewolf',
     health: 10,
     strength: 1,
 };
-const monsters = {
-    '0,0': {...werewolf, name: 'Wolfie'},
+
+const vampire = {
+    name: 'Dracula',
+    health: 12,
+    strength: 3,
 };
-const player = {
+
+const alien = {
+    name: 'Alien',
+    health: 13,
+    strength: 4,
+};
+
+const allowedMovements = {
+    '1,0': ['west', 'east'],
+    '0,0': ['north'],
+    '2,0': ['north'],
+    '0,1': ['north', 'east'],
+    '1,1': ['north'],
+    '2,1': ['north', 'west'],
+    '0,2': ['east'],
+    '2,2': ['west']
+};
+
+let monsters = createMonsters();
+
+const startPlayer = {
     name: 'Moa',
     health: 5,
     strength: 1,
 };
+
+let player = {...startPlayer};
+
+function createMonsters() {
+    const monsters = {
+        '0,0': {...werewolf, name: 'Wolfie'},
+        '0,1': {...vampire, name: 'Bloody Mary'},
+        '2,0': {...alien},
+    };
+    return monsters;
+}
 
 // Move function
 function move(direction) {
@@ -31,12 +68,20 @@ function move(direction) {
     return position;
 };
 
+function moveOnMap(direction) {
+    if(allowedMovements[position.toString()].includes(direction)) {
+        move(direction);
+    } else {
+        alert('This road is blocked! Choose another direction.');
+    }
+};
+
 //Load next step, evaluate if game is won, movements
 function runGame() {
+    printStory();
+    fight();
     checkGameWon();
     checkGameLost();
-    printStory();
-    fight();    
 };
 
 //Evaluate if game is won
@@ -47,13 +92,15 @@ function checkGameWon() {
 };
 
 function checkGameLost() {
-    if (player.health < 0) {
+    if (player.health <= 0) {
         alert('You have died, click restart to try again.');
     }
 };
 
 function restartGame() {
     position = [...startPosition];
+    player = {...startPlayer};
+    monsters = createMonsters();
 };
 
 function printStory() {
@@ -95,8 +142,4 @@ function damagePlayer(monsterEncounter) {
     const damage = diceRoll() * monsterEncounter.strength;
     player.health -= damage;
     console.log(monsterEncounter.name + ' hit you for ' + damage + ' damage.');
-}
-
-function restartGame() {
-    
 }
