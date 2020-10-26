@@ -4,7 +4,7 @@ let position = [...startPosition];
 
 const story = {
     '1,0': 'Du vaknar upp mitt i skogen och har ingen aning om hur du hamnade här. Det är mitt i natten, kallt och fullmånen lyser upp omgivningarna. Du tar dig upp på fötter och ser dig omkring. I norr är vägen blockerad av en hög mur. Välj ett väderstreck på knapparna nedan.',
-    '0,0': 'En stor varulv hoppar fram och attakerar!',
+    '0,0': 'Du går förbi ett snårigt skogsparti när en stor varulv plötsligt hoppar fram och attakerar!',
     '2,0': 'En glänta uppenbarar sig i skogen, ett rymdskepp blinkar och du bländas av ett starkt sken. En tre meter lång alien kommer hotfullt emot dig.',
     '1,1': 'Middle text',
     '1,2': 'Goal text',
@@ -32,9 +32,9 @@ const allowedMovements = {
     '1,0': ['west', 'east'],
     '0,0': ['north'],
     '2,0': ['north'],
-    '0,1': ['north', 'east'],
+    '0,1': ['east'],
     '1,1': ['north'],
-    '2,1': ['north', 'west'],
+    '2,1': ['west'],
     '0,2': ['east'],
     '2,2': ['west']
 };
@@ -43,7 +43,7 @@ let monsters = createMonsters();
 
 const startPlayer = {
     name: 'Moa',
-    health: 5,
+    health: 12,
     strength: 1,
 };
 
@@ -81,9 +81,9 @@ function moveOnMap(direction) {
 //Load next step, evaluate if game is won, movements
 function runGame() {
     printStory();
-    fight();
     checkGameWon();
     checkGameLost();
+    clearFightLog();
 };
 
 //Evaluate if game is won
@@ -95,7 +95,7 @@ function checkGameWon() {
 
 function checkGameLost() {
     if (player.health <= 0) {
-        alert('You have died, click restart to try again.');
+        showFightLogText('You have died, click restart to try again.');
     }
 };
 
@@ -121,12 +121,12 @@ function fight() {
     while (true) {
         damageMonster(monsterEncounter);
         if (monsterEncounter.health <= 0) {
-            console.log(monsterEncounter.health);
-            console.log(monsterEncounter.name + ' is dead!');
+            showFightLogText(monsterEncounter.name + ' is dead!');
             break;
         }
         damagePlayer(monsterEncounter);
         if (player.health <= 0) {
+            showFightLogText('You have died, click restart to try again.');
             break;
         }
     }
@@ -141,14 +141,22 @@ function diceRoll() {
 function damageMonster(monsterEncounter) {
     const damage = diceRoll() * player.strength;
     monsterEncounter.health -= damage;
+    showFightLogText('You hit ' + monsterEncounter.name + ' for ' + damage + ' damage.');
     console.log('You hit ' + monsterEncounter.name + ' for ' + damage + ' damage.');
 };
 
 function damagePlayer(monsterEncounter) {
     const damage = diceRoll() * monsterEncounter.strength;
     player.health -= damage;
+    showFightLogText(monsterEncounter.name + ' hit you for ' + damage + ' damage.');
     console.log(monsterEncounter.name + ' hit you for ' + damage + ' damage.');
 };
+
+
+function showFightLogText(text) {
+    document.getElementById('fight-log').appendChild(document.createTextNode(text + ' '));
+};
+
 
 function showTextInHtml(text) {
     document.getElementById('story-text').innerText = text;
@@ -167,4 +175,8 @@ function moveEast() {
 function moveNorth() {
     moveOnMap('north');
     runGame();
+};
+
+function clearFightLog() {
+    document.getElementById('fight-log').innerText = '';
 };

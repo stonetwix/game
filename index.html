@@ -17,6 +17,10 @@
                 Deleniti id eaque dicta amet! Sapiente commodi repellendus iusto?</p>
         </div>
 
+        <div id="text-block">
+            <p id="fight-log"></p>
+        </div>
+
         <div id="input">
             <label for="input-field">Type your answer</label>
             <input class="input-field" type="text" required>
@@ -24,9 +28,10 @@
         </div>
         
         <div id="button-choices">
-            <button id="choice1" onclick="moveWest()">Gå väst</button>
-            <button id="choice1" onclick="moveEast()">Gå öst</button>
-            <button id="choice1" onclick="moveNorth()">Gå norr</button>
+            <button id="west" onclick="moveWest()">Gå väst</button>
+            <button id="east" onclick="moveEast()">Gå öst</button>
+            <button id="north" onclick="moveNorth()">Gå norr</button>
+            <button id="fight" onclick="fight()">Starta Fight</button>
         </div>
 
         <div id="button-restart">
