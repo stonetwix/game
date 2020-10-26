@@ -27,6 +27,8 @@ p, label, button {
     margin-top: 10rem;
     background-color: white;
     padding: 3rem;
+    animation-name: slide-down;
+    animation-duration: 2s;
 }
 
 input {
@@ -40,13 +42,27 @@ button {
     margin-right: 2rem;
     margin-top: 2rem;
     font-weight: 700;
-    background-color: #001227;
+    background-color: #12335a;
     border: none;
     border-radius: 0;
     color: white;
+    font-size: 1.1rem;
 }
 
 button:hover {
-    background-color: #12335a;
+    background-color: #001227;
     cursor: pointer;
+}
+
+i {
+    margin-left: 1rem;
+}
+
+@keyframes slide-down {
+    from {
+        margin-left:-30%
+    }
+    to {
+        margin-left: 0%;
+    }
 }

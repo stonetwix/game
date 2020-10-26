@@ -3,7 +3,9 @@ const startPosition = [1, 0];
 let position = [...startPosition];
 
 const story = {
-    '1,0': 'Start text',
+    '1,0': 'Du vaknar upp mitt i skogen och har ingen aning om hur du hamnade här. Det är mitt i natten, kallt och fullmånen lyser upp omgivningarna. Du tar dig upp på fötter och ser dig omkring.',
+    '0,0': 'Ett par gula lysand ögon lurar i ett buskage, en varulv hoppar fram. Grrr! Jag är och du är inte välkommen här och attakerar.',
+    '2,0': '',
     '1,1': 'Middle text',
     '1,2': 'Goal text',
 };
@@ -105,11 +107,19 @@ function restartGame() {
 
 function printStory() {
     const storyText = story[position.toString()] || 'No story';
+    showTextInHtml(storyText);
     console.log(storyText);
+};
+
+function showHideElements() {
+
 };
 
 function fight() {
     const monsterEncounter = monsters[position.toString()];
+    if (monsterEncounter === undefined) {
+        return;
+    }
     console.log('Hello, my name is ' + monsterEncounter.name);
     while (true) {
         damageMonster(monsterEncounter);
@@ -122,7 +132,6 @@ function fight() {
         if (player.health <= 0) {
             break;
         }
-
     }
 };
 
@@ -142,4 +151,13 @@ function damagePlayer(monsterEncounter) {
     const damage = diceRoll() * monsterEncounter.strength;
     player.health -= damage;
     console.log(monsterEncounter.name + ' hit you for ' + damage + ' damage.');
+};
+
+function showTextInHtml(text) {
+    document.getElementById('story-text').innerText = text;
+};
+
+function moveWest() {
+    moveOnMap('west');
+    runGame();
 }

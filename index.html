@@ -6,12 +6,12 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/a8a1757755.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
         <div id="text-block">
-            <h1>Rubrik rubrik rubrik</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+            <p id="story-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
                 Ipsam praesentium dicta quo earum consectetur accusamus, 
                 harum aut sapiente officiis repellendus tempore. 
                 Deleniti id eaque dicta amet! Sapiente commodi repellendus iusto?</p>
@@ -24,10 +24,18 @@
         </div>
         
         <div id="button-choices">
-            <button>Val 1</button>
-            <button>Val 2</button>
+            <button id="choice1" onclick="moveWest()">Gå väst</button>
         </div>
-    
+        
+        <div>
+            <button id="search">Search area<i class="fas fa-search"></i></button>
+        </div>
+
     </div>
 </body>
+<script language="javascript">
+    window.onload = function(e) { 
+        runGame();
+    }
+</script>
 </html>
