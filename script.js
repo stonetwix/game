@@ -34,14 +34,21 @@ function move(direction) {
 //Load next step, evaluate if game is won, movements
 function runGame() {
     checkGameWon();
+    checkGameLost();
     printStory();
-    fight();
+    fight();    
 };
 
 //Evaluate if game is won
 function checkGameWon() {
     if (position[0] === 1 && position[1] === 2) {
         alert('Yay you have won the game');
+    }
+};
+
+function checkGameLost() {
+    if (player.health < 0) {
+        alert('You have died, click restart to try again.');
     }
 };
 
@@ -88,4 +95,8 @@ function damagePlayer(monsterEncounter) {
     const damage = diceRoll() * monsterEncounter.strength;
     player.health -= damage;
     console.log(monsterEncounter.name + ' hit you for ' + damage + ' damage.');
+}
+
+function restartGame() {
+    
 }
