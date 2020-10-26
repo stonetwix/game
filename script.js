@@ -96,7 +96,7 @@ function runGame() {
 
 //Evaluate if game is won
 function checkGameWon() {
-    if (position[0] === 1 && position[1] === 2) {
+    if (position[0] === 1 && position[1] === 1) {
         alert('Yay you have won the game');
     }
 };
@@ -187,4 +187,14 @@ function moveNorth() {
 
 function clearFightLog() {
     document.getElementById('fight-log').innerText = '';
+};
+
+function youAreHome() {
+    alert('Vad glad jag är att du är hemma igen! Kom in så spelar vi xxxxx');
+};
+
+
+//Fortsätt här...
+function showReplyHome(text) {
+    document.getElementById('home').innerText = text;
 };
