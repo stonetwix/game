@@ -191,6 +191,7 @@ function clearFightLog() {
 };
 
 function youAreHome() {
+    showTitleHome();
     showReplyHome();    
 };
 
@@ -198,3 +199,9 @@ function showReplyHome() {
     let inputText = document.getElementById('answer-input').value;
     document.getElementById('home').innerText = inputText;
 };
+
+function showTitleHome() {
+    const titleText = 'Yay, du har vunnit spelet!'
+    document.getElementById('title-win').innerText = titleText;
+};
+
