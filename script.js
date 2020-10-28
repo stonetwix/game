@@ -94,6 +94,7 @@ function runGame() {
     clearFightLog();
     showTextInputHideButtons();
     hideMovementDuringFight();
+    showMonsterPics();
 };
 
 //Evaluate if game is won
@@ -237,4 +238,27 @@ function changeMovementVisibility(visibility) {
         item[i].style.visibility = visibility;
     }
 };
+
+function showMonsterPics() {
+    if (position[0] === 0 && position[1] === 0) {
+        document.getElementById('werewolf').style.display = 'block';
+    } else {
+        document.getElementById('werewolf').style.display = 'none';
+    }
+    if (position[0] === 0 && position[1] === 1) {
+        document.getElementById('bat').style.display = 'block';
+    } else {
+        document.getElementById('bat').style.display = 'none';
+    }
+    if (position[0] === 2 && position[1] === 0) {
+        document.getElementById('alien').style.display = 'block';
+    } else {
+        document.getElementById('alien').style.display = 'none';
+    }
+    if (position[0] === 2 && position[1] === 1) {
+        document.getElementById('troll').style.display = 'block';
+    } else {
+        document.getElementById('troll').style.display = 'none';
+    }
+}
 
