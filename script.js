@@ -12,13 +12,13 @@ const story = {
 };
 
 const werewolf = {
-    name: 'Werewolf',
+    name: 'Wolfie',
     health: 7,
     strength: 1,
 };
 
 const vampire = {
-    name: 'Dracula',
+    name: 'Bloody Mary',
     health: 4,
     strength: 2,
 };
@@ -58,8 +58,8 @@ let player = {...startPlayer};
 
 function createMonsters() {
     const monsters = {
-        '0,0': {...werewolf, name: 'Wolfie'},
-        '0,1': {...vampire, name: 'Bloody Mary'},
+        '0,0': {...werewolf},
+        '0,1': {...vampire},
         '2,0': {...alien},
         '2,1': {...troll},
     };
@@ -97,7 +97,8 @@ function runGame() {
 //Evaluate if game is won
 function checkGameWon() {
     if (position[0] === 1 && position[1] === 1) {
-        alert('Yay you have won the game');
+        //alert('Yay you have won the game');
+        document.getElementById('')
     }
 };
 
@@ -190,11 +191,10 @@ function clearFightLog() {
 };
 
 function youAreHome() {
-    alert('Vad glad jag är att du är hemma igen! Kom in så spelar vi xxxxx');
+    showReplyHome();    
 };
 
-
-//Fortsätt här...
-function showReplyHome(text) {
-    document.getElementById('home').innerText = text;
+function showReplyHome() {
+    let inputText = document.getElementById('answer-input').value;
+    document.getElementById('home').innerText = inputText;
 };

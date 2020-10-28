@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script defer src="script.js"></script>
     <script src="https://kit.fontawesome.com/a8a1757755.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
         <div id="text-block">
+            <h1 id="title-win"></h1>
             <p id="story-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
                 Ipsam praesentium dicta quo earum consectetur accusamus, 
                 harum aut sapiente officiis repellendus tempore. 
@@ -34,7 +35,7 @@
 
         <div id="input">
             <label for="input-field">Type your answer</label>
-            <input class="input-field" type="text" required>
+            <input id="answer-input" class="input-field" type="text" required>
             <button id="submit-answer" onclick="youAreHome()">Submit</button>
         </div>
 
