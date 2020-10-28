@@ -92,13 +92,13 @@ function runGame() {
     checkGameWon();
     checkGameLost();
     clearFightLog();
+    showTextInputHideButtons();
 };
 
 //Evaluate if game is won
 function checkGameWon() {
     if (position[0] === 1 && position[1] === 1) {
         //alert('Yay you have won the game');
-        document.getElementById('')
     }
 };
 
@@ -203,5 +203,15 @@ function showReplyHome() {
 function showTitleHome() {
     const titleText = 'Yay, du har vunnit spelet!'
     document.getElementById('title-win').innerText = titleText;
+};
+
+function showTextInputHideButtons() {
+    if (position[0] === 1 && position[1] === 1) {
+        document.getElementById('container-input').style.display = 'block';
+        document.getElementById('west').style.display = 'none';
+        document.getElementById('north').style.display = 'none';
+        document.getElementById('east').style.display = 'none';
+        document.getElementById('fight').style.display = 'none';
+    } 
 };
 

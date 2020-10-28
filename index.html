@@ -25,18 +25,20 @@
         <div id="text-block">
             <p id="home"></p>
         </div>
+
+        <div id="container-input">
+            <div id="input">
+                <label for="input-field">Type your answer</label>
+                <input id="answer-input" class="input-field" type="text" required>
+                <button id="submit-answer" onclick="youAreHome()">Submit</button>
+            </div>
+        </div>
         
         <div id="button-choices">
             <button id="west" onclick="moveWest()">Gå väst</button>
             <button id="east" onclick="moveEast()">Gå öst</button>
             <button id="north" onclick="moveNorth()">Gå norr</button>
             <button id="fight" onclick="fight()">Starta Fight</button>
-        </div>
-
-        <div id="input">
-            <label for="input-field">Type your answer</label>
-            <input id="answer-input" class="input-field" type="text" required>
-            <button id="submit-answer" onclick="youAreHome()">Submit</button>
         </div>
 
         <div id="button-restart">

@@ -31,11 +31,17 @@ p, label, button {
     animation-duration: 2s;
 }
 
-input {
+#container-input {
+    display: none;    
+    
+}
+
+#answer-input {
     padding: 0.4rem;
     width: 15rem;
-    margin: 1rem 1rem
+    margin: 1rem 1rem;
 }
+
 
 button {
     padding: 0.5rem 1rem 0.5rem 1rem;
