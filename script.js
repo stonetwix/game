@@ -223,13 +223,23 @@ function hideMovementDuringFight() {
         return;
     }
     if (monsterEncounter.health > 0) {
-        document.getElementById('west').style.visibility = 'hidden';
-        document.getElementById('north').style.visibility = 'hidden';
-        document.getElementById('east').style.visibility = 'hidden';
+        changeMovementVisibility();
+        // document.getElementById('west').style.visibility = 'hidden';
+        // document.getElementById('north').style.visibility = 'hidden';
+        // document.getElementById('east').style.visibility = 'hidden';
     } else {
+        
         document.getElementById('west').style.visibility = 'visible';
         document.getElementById('north').style.visibility = 'visible';
         document.getElementById('east').style.visibility = 'visible';
+    }
+};
+
+function changeMovementVisibility() {
+    let buttonsMove = document.getElementsByClassName('buttons-move');
+    let item = buttonsMove;
+    for (let i = 0; i < buttonsMove.length; i++) {
+        item[i].style.visibility = 'hidden';
     }
 };
 
