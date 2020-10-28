@@ -43,8 +43,6 @@ p, label, button {
 }
 
 .monster-pic {
-   margin: -1rem 2rem 0 -2rem;
-   align-self: right; 
    display: none;
 }
 

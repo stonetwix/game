@@ -2,6 +2,9 @@ const startPosition = [1, 0];
 
 let position = [...startPosition];
 
+/**
+ * Object with story connected to different position.
+ */
 const story = {
     '1,0': 'Du vaknar upp mitt i skogen och har ingen aning om hur du hamnade här. Det är mitt i natten, kallt och fullmånen lyser upp omgivningarna. Du tar dig upp på fötter och ser dig omkring. I norr är vägen blockerad av en hög mur. Välj ett väderstreck på knapparna nedan.',
     '0,0': 'Du går förbi ett snårigt skogsparti när en stor varulv plötsligt hoppar fram och attakerar! Du har bara dina knytnävar som vapen. Om du överlever fighten finns bara en väg att gå – norrut.',
@@ -35,6 +38,9 @@ const troll = {
     strength: 3,
 };
 
+/**
+ * Object that describes where directions are blocked.
+ */
 const allowedMovements = {
     '1,0': ['west', 'east'],
     '0,0': ['north'],
@@ -48,14 +54,20 @@ const allowedMovements = {
 
 let monsters = createMonsters();
 
+/**
+ * Object describing players' name, health and strength.
+ */
 const startPlayer = {
-    name: 'Moa',
+    name: 'MosterSlayer',
     health: 12,
     strength: 2,
 };
 
 let player = {...startPlayer};
 
+/**
+ * Function containing object connecting monsters to positions.
+ */
 function createMonsters() {
     const monsters = {
         '0,0': {...werewolf},
@@ -66,7 +78,10 @@ function createMonsters() {
     return monsters;
 }
 
-// Move function
+/**
+ * 
+ * @param {*} direction 
+ */
 function move(direction) {
     if (direction === 'west') {
         position[0] -= 1;
@@ -260,5 +275,6 @@ function showMonsterPics() {
     } else {
         document.getElementById('troll').style.display = 'none';
     }
-}
+};
 
+// validering av inputfältet
