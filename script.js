@@ -7,7 +7,7 @@ const story = {
     '0,0': 'Du går förbi ett snårigt skogsparti när en stor varulv plötsligt hoppar fram och attakerar! Du har bara dina knytnävar som vapen. Om du överlever fighten finns bara en väg att gå – norrut.',
     '2,0': 'En glänta uppenbarar sig i skogen, lamporna på  ett rymdskepp blinkar och du bländas av ett starkt sken. En tre meter lång alien kommer hotfullt emot dig. Du ser dig snabbt omkring och ser något blänkande föremål i gräset bredvid dig – ett svärd! Du plockar upp det och tar upp kampen mot utomjordingen. OM du tar dig förbi fortsätt norrut.',
     '0,1': 'Du tar dig vidare genom den täta skogen och känner vingarna från en ovanligt stor fladdermus slå dig mot axeln, du snubblar till och när du tittar upp så står du ansikte mot ansikte med en 1000 år gammal och väldigt blodtörstig vampyr. Du får tag på en spetsig grenbit som vapen. Du fortsätter sedan österut.',
-    '1,1': 'Det har blivit morgon och du är äntligen hemma igen, din lillasyster springer och möter dig i trädgården, hon undrar var du har varit. Svara i inputfältet nedan.',
+    '1,1': 'Det har blivit morgon och du är äntligen hemma igen, din hund kommer springande och möter dig i trädgården, om du vil klappa hunden. Skriv "klappa" i inputfältet nedan.',
     '2,1': 'Du tar dig vidare genom skogen och börjar känna igen stigarna, du börjar närma sig ditt hus. Du hör tunga steg som kommer emot dig bakom en krök längre fram. Marken skakar under dina fötter. Ett stort troll uppenbarar sig framför dig och blockerar vägen. Den ser inte vänligt inställd ut. Tur att du har kvar svärdet. Lyckas du övervinna trollet så fortsätt västerut.',
 };
 
@@ -223,23 +223,18 @@ function hideMovementDuringFight() {
         return;
     }
     if (monsterEncounter.health > 0) {
-        changeMovementVisibility();
-        // document.getElementById('west').style.visibility = 'hidden';
-        // document.getElementById('north').style.visibility = 'hidden';
-        // document.getElementById('east').style.visibility = 'hidden';
-    } else {
+        changeMovementVisibility('hidden');
         
-        document.getElementById('west').style.visibility = 'visible';
-        document.getElementById('north').style.visibility = 'visible';
-        document.getElementById('east').style.visibility = 'visible';
+    } else {
+        changeMovementVisibility('visible');
     }
 };
 
-function changeMovementVisibility() {
+function changeMovementVisibility(visibility) {
     let buttonsMove = document.getElementsByClassName('buttons-move');
     let item = buttonsMove;
     for (let i = 0; i < buttonsMove.length; i++) {
-        item[i].style.visibility = 'hidden';
+        item[i].style.visibility = visibility;
     }
 };
 

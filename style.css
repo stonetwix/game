@@ -23,7 +23,7 @@ p, label, button {
 .container {
     display: flex;
     flex-direction: column;
-    width: 40rem;
+    width: 50rem;
     margin-top: 10rem;
     background-color: white;
     padding: 3rem;
@@ -40,6 +40,11 @@ p, label, button {
     padding: 0.4rem;
     width: 15rem;
     margin: 1rem 1rem;
+}
+
+.monster-pic {
+   margin: -1rem 2rem 0 -2rem;
+   align-self: right; 
 }
 
 
