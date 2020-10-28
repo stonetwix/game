@@ -93,6 +93,7 @@ function runGame() {
     checkGameLost();
     clearFightLog();
     showTextInputHideButtons();
+    hideMovementDuringFight();
 };
 
 //Evaluate if game is won
@@ -139,6 +140,7 @@ function fight() {
             break;
         }
     }
+    hideMovementDuringFight();
 };
 
 function diceRoll() {
@@ -213,5 +215,21 @@ function showTextInputHideButtons() {
         document.getElementById('east').style.display = 'none';
         document.getElementById('fight').style.display = 'none';
     } 
+};
+
+function hideMovementDuringFight() {
+    const monsterEncounter = monsters[position.toString()];
+    if(monsterEncounter === undefined) {
+        return;
+    }
+    if (monsterEncounter.health > 0) {
+        document.getElementById('west').style.visibility = 'hidden';
+        document.getElementById('north').style.visibility = 'hidden';
+        document.getElementById('east').style.visibility = 'hidden';
+    } else {
+        document.getElementById('west').style.visibility = 'visible';
+        document.getElementById('north').style.visibility = 'visible';
+        document.getElementById('east').style.visibility = 'visible';
+    }
 };
 
