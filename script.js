@@ -6,7 +6,7 @@ let position = [...startPosition];
  * Object with story connected to different position.
  */
 const story = {
-    '1,0': 'Du vaknar upp mitt i skogen och har ingen aning om hur du hamnade här... Det är mitt i natten, kallt och fullmånen \
+    '1,0': 'Du vaknar upp i skogen och har ingen aning om hur du hamnade här... Det är mitt i natten, kallt och fullmånen \
     lyser upp omgivningarna. Du tar dig upp på fötter och ser dig omkring. I norr är vägen blockerad av en hög mur. \
     Välj ett väderstreck på knapparna nedan för att försöka ta dig hem igen.',
     '0,0': 'Du går förbi ett snårigt skogsparti när en stor varulv plötsligt hoppar fram och attakerar! Du har bara dina knytnävar som vapen. \
@@ -17,8 +17,8 @@ const story = {
     '0,1': 'Du ser att du nästan är hemma igen och tar dig vidare genom den täta skogen. Plötsligt känner du vingarna från en ovanligt stor fladdermus \
     slå dig mot axeln, du snubblar till och när du tittar upp så står du ansikte mot ansikte med en 1 000 år gammal och väldigt blodtörstig vampyr. \
     Du får tag på en spetsig grenbit som vapen. Vampyren fäller ut sina huggtänder. Om du lyckas övervinna vampyren fortsätter du sedan österut.',
-    '1,1': 'Det har blivit morgon och du är äntligen hemma igen, trött och sliten efter nattens alla monstermöten släpar du dig in i sovrummet. \
-    Skriv "vila" i rutan nedan.',
+    '1,1': 'Det har blivit morgon och du är äntligen hemma igen – trött och sliten efter nattens alla monstermöten släpar du dig in i huset. \
+    Vad vill du göra nu? Skriv ditt svar nedan.',
     '2,1': 'Du tar dig vidare genom skogen och börjar känna igen stigarna, du börjar närma dig ditt hus. Du hör tunga steg som kommer emot dig \
     bakom en krök längre fram. Marken skakar under dina fötter. Ett stort troll uppenbarar sig framför dig och blockerar vägen. \
     Tur att du har kvar svärdet. Lyckas du övervinna trollet så fortsätt västerut.'
@@ -240,7 +240,7 @@ function clearFightLog() {
 /** Function displaying which elements to show when game is won. */
 function youAreHome() {
     showTitleHome();
-    showReplyHome();    
+    showReplyHome();
 };
 
 /** Function displaying your text from input field on page. */
@@ -255,7 +255,7 @@ function showTitleHome() {
     document.getElementById('title-win').innerText = titleText;
 };
 
-/** Function displaying inpu field on end position and removes buttons. */
+/** Function displaying input field on end position and removes buttons. */
 function showTextInputHideButtons() {
     if (position[0] === 1 && position[1] === 1) {
         document.getElementById('container-input').style.display = 'block';
@@ -315,5 +315,3 @@ function showMonsterPics() {
         document.getElementById('troll').style.display = 'none';
     }
 };
-
-// validering av inputfältet
