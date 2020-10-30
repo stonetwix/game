@@ -28,7 +28,7 @@ p, label, button {
     background-color: white;
     padding: 3rem;
     animation-name: slide-down;
-    animation-duration: 2s;
+    animation-duration: 1s;
 }
 
 #container-input {

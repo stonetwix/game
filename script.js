@@ -2,9 +2,7 @@ const startPosition = [1, 0];
 
 let position = [...startPosition];
 
-/**
- * Object with story connected to different position.
- */
+/** Object with story connected to different positions. */
 const story = {
     '1,0': 'Du vaknar upp i skogen och har ingen aning om hur du hamnade här... Det är mitt i natten, kallt och fullmånen \
     lyser upp omgivningarna. Du tar dig upp på fötter och ser dig omkring. I norr är vägen blockerad av en hög mur. \
@@ -48,7 +46,7 @@ const troll = {
     strength: 3,
 };
 
-/** Object that describes where directions are blocked. */
+/** Object that describes which directions are allowed. */
 const allowedMovements = {
     '1,0': ['west', 'east'],
     '0,0': ['north'],
@@ -62,7 +60,7 @@ const allowedMovements = {
 
 let monsters = createMonsters();
 
-/** Object describing players' name, health and strength. */
+/** Object describing the players name, health and strength. */
 const startPlayer = {
     name: 'Monster Slayer',
     health: 12,
@@ -71,7 +69,7 @@ const startPlayer = {
 
 let player = {...startPlayer};
 
-/** Function containing object connecting monsters to positions. */
+/** Contains object that connects monsters to positions. */
 function createMonsters() {
     const monsters = {
         '0,0': {...werewolf},
@@ -83,8 +81,8 @@ function createMonsters() {
 };
 
 /**
- *  @param {string} direction describes how to move on map, going west, east or north.
- * Updates position from starting position.
+ * Updates position from current position.
+ * @param {string} direction Direction how to move on map, going 'west', 'east' or 'north'.
  */
 function move(direction) {
     if (direction === 'west') {
@@ -97,7 +95,10 @@ function move(direction) {
     return position;
 };
 
-/** Function alerts if checkes if movement is allowed and alerts if not. */
+/**
+ * Checks if movement is allowed and alerts if not. 
+ * @param {string} direction Direction how to move on map, going 'west', 'east' or 'north'.
+ */
 function moveOnMap(direction) {
     if(allowedMovements[position.toString()].includes(direction)) {
         move(direction);
@@ -107,7 +108,6 @@ function moveOnMap(direction) {
 };
 
 /** Collection of functions that run the game (load next step, evaluate if game is won/lost, movements, shows and hides elements). */
-
 function runGame() {
     printStory();
     checkGameWon();
@@ -118,21 +118,21 @@ function runGame() {
     showMonsterPics();
 };
 
-/** Function that evaluates if game is won. */
+/** Evaluates if game is won. */
 function checkGameWon() {
     if (position[0] === 1 && position[1] === 1) {
         //alert('Yay you have won the game');
     }
 };
 
-/** Function that evaluates if game is lost. */
+/** Evaluates if game is lost. */
 function checkGameLost() {
     if (player.health <= 0) {
         showFightLogText('You have died, click restart to try again.');
     }
 };
 
-/** Function that reload the game. */
+/** Restarts the game. */
 function restartGame() {
     position = [...startPosition];
     player = {...startPlayer};
@@ -140,14 +140,14 @@ function restartGame() {
     location.reload();
 };
 
-/** Function that display the story connected to position. */
+/** Displays the story connected to position. */
 function printStory() {
     const storyText = story[position.toString()] || 'No story';
     showTextInHtml(storyText);
     console.log(storyText);
 };
 
-/** Function that checkes if fight is lost or won. */
+/** Handle fights between monsters and player, checks if fight is lost or won. */
 function fight() {
     const monsterEncounter = monsters[position.toString()];
     if (monsterEncounter === undefined) {
@@ -169,7 +169,9 @@ function fight() {
     hideMovementDuringFight();
 };
 
-/** Function that rondomize numbers. */
+/** Simulates dice roll for a six sided dice.
+ * @return {integer} Number between 1 and 6.
+ */
 function diceRoll() {
     const min = Math.ceil(1);
     const max = Math.floor(5);
@@ -177,7 +179,7 @@ function diceRoll() {
 };
 
 /**
- * Function that calculate how much damage monsters take.
+ * Calculates how much damage monsters take.
  * @param {string} monsterEncounter monsters connected to positions.
  */
 function damageMonster(monsterEncounter) {
@@ -188,7 +190,7 @@ function damageMonster(monsterEncounter) {
 };
 
 /**
- * Function that calculate how much damage player take.
+ * Calculates how much damage player take.
  * @param {string} monsterEncounter monsters connected to positions.
  */
 function damagePlayer(monsterEncounter) {
@@ -199,63 +201,63 @@ function damagePlayer(monsterEncounter) {
 };
 
 /**
- * Function displaying the fight log on page.
- * @param {string} text shows fightlog on page.
+ * Displaying the fight log on page.
+ * @param {string} text Shows fight log on page.
  */
 function showFightLogText(text) {
     document.getElementById('fight-log').appendChild(document.createTextNode(text + ' '));
 };
 
 /**
- * Function displaying the story text on page.
- * @param {string} text shows story text on page.
+ * Displaying the story text on page.
+ * @param {string} text Shows story text on page.
  */
 function showTextInHtml(text) {
     document.getElementById('story-text').innerText = text;
 };
 
-/** Function for moving west. */
+/** Moving west. */
 function moveWest() {
     moveOnMap('west');
     runGame();
 };
 
-/** Function for moving east. */
+/** Moving east. */
 function moveEast() {
     moveOnMap('east');
     runGame();
 };
 
-/** Function for moving north. */
+/** Moving north. */
 function moveNorth() {
     moveOnMap('north');
     runGame();
 };
 
-/** Function clearing fight log when moving to next position. */
+/** Clears fight log when moving to next position. */
 function clearFightLog() {
     document.getElementById('fight-log').innerText = '';
 };
 
-/** Function displaying which elements to show when game is won. */
+/** Displays which elements to show when game is won. */
 function youAreHome() {
     showTitleHome();
     showReplyHome();
 };
 
-/** Function displaying your text from input field on page. */
+/** Displays your text from input field on page. */
 function showReplyHome() {
     let inputText = document.getElementById('answer-input').value;
     document.getElementById('home').innerText = inputText;
 };
 
-/** Function displaying h1 title when game is won on page. */
+/** Displays h1 title when game is won on page. */
 function showTitleHome() {
     const titleText = 'Yay, du har vunnit spelet!'
     document.getElementById('title-win').innerText = titleText;
 };
 
-/** Function displaying input field on end position and removes buttons. */
+/** Displays input field on end position and removes buttons. */
 function showTextInputHideButtons() {
     if (position[0] === 1 && position[1] === 1) {
         document.getElementById('container-input').style.display = 'block';
@@ -266,7 +268,7 @@ function showTextInputHideButtons() {
     } 
 };
 
-/** Function that estimates if it should hide or display movement buttons during fight in positions with monsters. */
+/** Estimates if it should hide or display movement buttons during fight in positions with monsters. */
 function hideMovementDuringFight() {
     const monsterEncounter = monsters[position.toString()];
     if(monsterEncounter === undefined) {
@@ -281,8 +283,8 @@ function hideMovementDuringFight() {
 };
 
 /**
- * Function that hides or shows movement buttons.
- * @param {string} visibility sets visibility to movement buttons.
+ * Hides or shows movement buttons.
+ * @param {string} visibility Sets visibility to movement buttons.
  */
 function changeMovementVisibility(visibility) {
     let buttonsMove = document.getElementsByClassName('buttons-move');
@@ -292,7 +294,7 @@ function changeMovementVisibility(visibility) {
     }
 };
 
-/** Function that displays the right monster image on the right position. */
+/** Displays the right monster image on the right position. */
 function showMonsterPics() {
     if (position[0] === 0 && position[1] === 0) {
         document.getElementById('werewolf').style.display = 'block';
