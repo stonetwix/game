@@ -83,6 +83,7 @@ function createMonsters() {
 /**
  * Updates position from current position.
  * @param {string} direction Direction how to move on map, going 'west', 'east' or 'north'.
+ * @return {Number[]} Returns the updated position.
  */
 function move(direction) {
     if (direction === 'west') {
@@ -170,7 +171,7 @@ function fight() {
 };
 
 /** Simulates dice roll for a six sided dice.
- * @return {integer} Number between 1 and 6.
+ * @return {Number} Returns a number between 1 and 6.
  */
 function diceRoll() {
     const min = Math.ceil(1);
