@@ -25,7 +25,7 @@ p, label, button {
     flex-direction: column;
     width: 50rem;
     margin-top: 10rem;
-    background-color: white;
+    background-color: rgba(255,255,255, 0.8);
     padding: 3rem;
     animation-name: slide-down;
     animation-duration: 1s;
